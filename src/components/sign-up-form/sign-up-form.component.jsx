@@ -24,13 +24,13 @@ const SignUpForm = () => {
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
-  }
+  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
 
     setFormFields({ ...formFields, [name]: value });
-  }
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -41,7 +41,10 @@ const SignUpForm = () => {
     }
 
     try {
-      const {user} = await createAuthUserWithEmailAndPassword(email, password);
+      const {user} = await createAuthUserWithEmailAndPassword(
+        email,
+        password
+      );
 
       await createUserDocumentFromAuth(user, { displayName });
       resetFormFields();
