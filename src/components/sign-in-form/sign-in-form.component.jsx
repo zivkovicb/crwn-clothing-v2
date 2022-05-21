@@ -79,7 +79,7 @@ const SignInForm = () => {
           value={password}
         />
         <ButtonsContainer>
-        <Button type='submit'>Sign In</Button>
+        <Button type='submit'>Sign in</Button>
         <Button 
           type='button' 
           buttonType={BUTTON_TYPE_CLASSES.google} 
