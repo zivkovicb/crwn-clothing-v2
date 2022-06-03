@@ -63,16 +63,10 @@ export const getCategoriesAndDocuments = async () => {
   const q = query(collectionRef);
 
   const querySnapshot = await getDocs(q);
-  const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
-    const { title, items } = docSnapshot.data();
-    acc[title.toLowerCase()] = items;
-    return acc;
-  }, {});
+  return querySnapshot.docs.map(docSnapshot => docSnapshot.data());
+  
+};
 
-  return categoryMap;
-}
-
-//CHECKING if user exists in db, and CREATING one to the db if it does not exist already
 export const createUserDocumentFromAuth = async (userAuth, additionalInformation = {}) => {
   if (!userAuth) return;
 
@@ -82,9 +76,6 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
   if(!userSnapshot.exists()) {
     const { displayName, email } = userAuth;
     const createdAt = new Date();
-
-  //if user data does NOT exist
-  //create / set document with the data from userAuth in my collection
     try {
       await setDoc(userDocRef, {
         displayName,
@@ -96,7 +87,6 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
       console.log('error creating the user', error);
     }
   }
-  //if user data exist
   return userDocRef;
 };
 
