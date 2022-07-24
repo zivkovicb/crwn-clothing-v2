@@ -12,6 +12,8 @@
     "@types/node": "^18.0.6",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
+    "@types/redux": "^3.6.0",
+    "@types/redux-logger": "^3.0.9",
     "dotenv": "^16.0.1",
     "firebase": "^9.6.10",
     "netlify-cli": "^10.10.0",
