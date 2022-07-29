@@ -1,3 +1,4 @@
+import { User } from 'firebase/auth';
 import { USER_ACTION_TYPES } from "./user.types";
 import { createAction, withMatcher, Action, ActionWithPayload } from "../../utils/reducer/reducer.utils";
 import { UserData, AdditionalInformation } from "../../utils/firebase/firebase.utils";
@@ -25,7 +26,7 @@ export type SignUpStart = ActionWithPayload<
 
 export type SignUpSuccess = ActionWithPayload<
   USER_ACTION_TYPES.SIGN_UP_SUCCESS,
-  {user: UserData, additionalDetails: AdditionalInformation}
+  {user: User, additionalDetails: AdditionalInformation}
   >;
 
 export type SignUpFailed = ActionWithPayload<USER_ACTION_TYPES.SIGN_UP_FAILED, Error>;
@@ -54,7 +55,7 @@ export const emailSignInStart = withMatcher(
   createAction(USER_ACTION_TYPES.EMAIL_SIGN_IN_START, {email, password}));
 
 export const signInSuccess = withMatcher(
-  (user: UserData): SignInSuccess => 
+  (user: UserData & { id: string}): SignInSuccess => 
   createAction(USER_ACTION_TYPES.SIGN_IN_SUCCESS, user));
 
 export const signInFailed = withMatcher(
@@ -69,7 +70,7 @@ export const signUpStart = withMatcher((
   createAction(USER_ACTION_TYPES.SIGN_UP_START, { email, password, displayName }));
 
 export const signUpSuccess = withMatcher((
-  user: UserData, 
+  user: User, 
   additionalDetails: AdditionalInformation 
   ): SignUpSuccess =>
   createAction(USER_ACTION_TYPES.SIGN_UP_SUCCESS, { user, additionalDetails }));
