@@ -7,7 +7,7 @@ import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
 import {
   SignInContainer,
   ButtonsContainer
-} from './sign-in-form.styles.jsx';
+} from './sign-in-form.styles';
 
 import { googleSignInStart, emailSignInStart } from "../../store/user/user.action";
 
