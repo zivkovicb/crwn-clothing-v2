@@ -13,7 +13,7 @@ import {
   Footer,
   Name,
   Price
-} from './product-card.styles.jsx';
+} from './product-card.styles';
 
 const ProductCard = ({ product }) => {
   const { name, price, imageUrl } = product;

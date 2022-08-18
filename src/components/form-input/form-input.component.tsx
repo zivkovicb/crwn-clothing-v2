@@ -4,7 +4,7 @@ import {
   FormInputLabel,
   Input,
   Group
-} from './form-input.styles.jsx';
+} from './form-input.styles';
 
 type FormInputProps = { label: string } & InputHTMLAttributes<HTMLInputElement>;
 
